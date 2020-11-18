@@ -1,6 +1,6 @@
 const checkForWinner = (marker) => {
-    // check rows
     const gridCells = document.querySelectorAll('.gridCell')
+    // check rows
     for (let i = 0; i < gridCells.length; i += 3) {
         if (gridCells[i].textContent == marker) {
             if ((gridCells[i+1].textContent == marker) && (gridCells[i+2].textContent == marker)){

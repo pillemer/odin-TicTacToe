@@ -94,7 +94,17 @@ const gamePlay = (() => {
     }    
 
     const gameModeSwitch = () => {
-        document.querySelector('#gameMode').innerHTML = 'Two Player'
+        const modeButton = document.querySelector('#gameMode')
+        let singlePlayer = modeButton.value
+        // starts off in two player mode (i.e, false)
+        if (singlePlayer) {
+            modeButton.innerHTML = 'Two Player'
+            modeButton.value = '';
+        }
+        else {
+            modeButton.innerHTML = 'Single Player'
+            modeButton.value = 'true';
+        }
         gamePlay.newGame();
     }
 
