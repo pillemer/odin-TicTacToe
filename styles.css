@@ -46,21 +46,23 @@ header > button:active {
 .grid {
     background-color: deepskyblue;
     display: grid;
+    height: 300px;
+    width: 300px;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     gap: 3px;
+    
 }
 
 .grid > button {
     font-family: inherit;
-    height: 100px;
-    width: 100px;
     border: none;
     outline: none;
     background-color: darkslategrey;
     color: deepskyblue;
     font-size: 50px;
     cursor: pointer;
+
 }
 
 .grid > button:hover {
@@ -78,9 +80,9 @@ header > button:active {
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
     cursor: pointer;
-  }
+}
   
-  #text{
+#text {
     position: absolute;
     text-align: center;
     top: 50%;
@@ -90,4 +92,14 @@ header > button:active {
     color: white;
     transform: translate(-50%,-50%);
     -ms-transform: translate(-50%,-50%);
-  }
+}
+
+footer {
+    color:darkslategrey;
+    position: absolute;
+    bottom: 5px;
+}
+
+footer:hover {
+    color: deepskyblue;
+}
