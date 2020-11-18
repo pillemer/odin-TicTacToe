@@ -9,14 +9,19 @@
 <body>
     <h1>Tic-Tac-Toe</h1>
     <div class='container'>
-        <button id='newGame' onclick="gamePlay.newGame()">New Game</button>
-        <button id='playerSelection' onclick="gamePlay.switchMarker()">Play as O</button>
-        <h2>Place your marker to start</h2>
-        <div id='overlay' onclick="gamePlay.off()"><div id='text'></div>
-        </div>
-        <div class='grid'>
-        </div>
+        <header>
+            <button id='newGame' onclick="gamePlay.newGame()">New Game</button>
+            <button id='gameMode' onclick="gamePlay.gameModeSwitch()">Single Player</button>
+            <h2>Place your marker to start</h2>
+            <div id='overlay' onclick="gamePlay.off()">
+                <div id='text'></div>
+            </div>
+        </header>
+        <main>
+            <div class='grid'></div>
+        </main>
     </div>
     <script src="script.js"></script>
+    <script src="winCheck.js"></script>
 </body>
 </html>

@@ -1,6 +1,3 @@
-
-// newgame switches markers for some reason?
-// make it prettier
 // add AI
     // add option to play second against AI.
 
@@ -16,7 +13,7 @@ const displayGrid = (() => {
                 // place the active player mark on this cell
                 gamePlay.board.placeMark(`${i}${j}`, gamePlay.currentplayer.marker);
                 // check for a winner
-                if (gamePlay.checkForWinner(gamePlay.currentplayer.marker)) {
+                if (checkForWinner(gamePlay.currentplayer.marker)) {
                     document.querySelector('h2').textContent = 'Game Over'
                     gamePlay.gameOver();
                     return;
@@ -29,8 +26,6 @@ const displayGrid = (() => {
         }
     }
 })();
-
-
 
 const gameBoard = () => {
     const gridCells = document.querySelectorAll('.gridCell')
@@ -62,33 +57,34 @@ const gameBoard = () => {
     return { getState, placeMark, clearMarks }
 }
 
-const Player = (name, marker) => {
+// Player factory
+const Player = (name, marker, ai = false) => {
+
     const move = () => {
         // does nothing as of yet
         console.log('some kind of move')
     }
-    return {name, marker, move};
+    return {name, marker, ai, move};
 }
-
 
 const gamePlay = (() => {
     const gridCells = document.querySelectorAll('.gridCell')
     let board = gameBoard();
     let markers = ['X', 'O']
-    let human = Player('Human', markers[0])
-    let comp = Player('Computer', markers[1]);
-    let currentplayer = human;
+    let playerOne = Player('Player 1', markers[0])
+    let playerTwo = Player('Player 2', markers[1], true);
+    let currentplayer = playerOne;
 
     const switchPlayer = () => {
-        if (gamePlay.currentplayer.name == human.name) {
-            gamePlay.currentplayer = comp;
+        if (gamePlay.currentplayer.name == playerOne.name) {
+            gamePlay.currentplayer = playerTwo;
         } 
-        else {gamePlay.currentplayer = human;}
+        else {gamePlay.currentplayer = playerOne;}
     }
 
     const gameOver = () => {
         document.getElementById("overlay").style.display = "block";
-        document.getElementById('text').innerHTML = `GAME OVER! ${gamePlay.currentplayer.marker} WINS.`
+        document.getElementById('text').innerHTML = `<P>GAME OVER!</P><P> ${gamePlay.currentplayer.name} WINS.</p>`
         }
 
     const off = () => {
@@ -97,52 +93,24 @@ const gamePlay = (() => {
         gamePlay.newGame();
     }    
 
-    const switchMarker = () => {
-        // does nothing as of yet
-        markers = markers.reverse()
+    const gameModeSwitch = () => {
+        document.querySelector('#gameMode').innerHTML = 'Two Player'
         gamePlay.newGame();
     }
 
     const newGame = () => {
         gameBoard().clearMarks();
         gamePlay.board = gameBoard()
-        human = Player('Human', markers[0])
-        comp = Player('Computer', markers[1]);
-        currentplayer = human;
+        gamePlay.currentplayer = playerOne;
         return {board, currentplayer}
     };
 
-    const checkForWinner = (marker) => {
-        // check rows
-        for (let i = 0; i < gridCells.length; i += 3) {
-            if (gridCells[i].textContent == marker) {
-                if ((gridCells[i+1].textContent == marker) && (gridCells[i+2].textContent == marker)){
-                    return true;
-                }
-            }
-        }
-        // check columns
-        for (i = 0; i < 3; i++) {
-            if (gridCells[i].textContent == marker) {
-                if ((gridCells[i+3].textContent == marker) && (gridCells[i+6].textContent == marker)){
-                    return true;
-                }
-            } 
-        }
-        // check backslash diagonal
-        if (gridCells[0].textContent == marker) {
-            if ((gridCells[4].textContent == marker) && (gridCells[8].textContent == marker)){
-                return true;
-            }
-        } 
-        // check forwardslash diagonal
-        if (gridCells[2].textContent == marker) {
-            if ((gridCells[4].textContent == marker) && (gridCells[6].textContent == marker)){
-                return true;
-            }
-        }
-        return false;
-    }
+    
 
-    return { board, currentplayer, switchPlayer, switchMarker, checkForWinner, gameOver, newGame, off}
+    return { board, currentplayer, switchPlayer, gameModeSwitch, gameOver, newGame, off}
 })();
+
+
+const playerAI = () => {
+    
+}

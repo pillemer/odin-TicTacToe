@@ -1,7 +1,12 @@
+@font-face {
+    font-family: goldman;
+    src: url(Goldman-Bold.ttf);
+}
+
 body {
+    font-family: goldman;
     text-align: center;
     width: auto;
-    font-family: sans-serif;
     background-color: darkslategrey;
     color: deepskyblue;
 }
@@ -9,11 +14,33 @@ body {
 h1 {
     font-size: 50px;
 }
+
+h2 {
+    min-height: 3em;
+}
 .container {
     text-align: center;
     height: 300px;
     width: 300px;
     margin: 0 auto;
+}
+
+header > button {
+    font-family: goldman;
+    font-size: 20px;
+    color: deepskyblue;
+    background-color: transparent;
+    border-width: 0.5px;
+    cursor: pointer;
+    outline: none;
+}
+
+header > button:hover {
+    background-color: rgb(57, 95, 95);
+}
+
+header > button:active {
+    transform: scale(0.95);  
 }
 
 .grid {
@@ -25,15 +52,19 @@ h1 {
 }
 
 .grid > button {
+    font-family: inherit;
     height: 100px;
     width: 100px;
     border: none;
     outline: none;
     background-color: darkslategrey;
     color: deepskyblue;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 50px;
     cursor: pointer;
+}
+
+.grid > button:hover {
+    background-color:  rgba(57, 95, 95, 0.904);
 }
 
 #overlay {
@@ -54,7 +85,7 @@ h1 {
     text-align: center;
     top: 50%;
     left: 50%;
-    width: 350px;
+    width: 100%;
     font-size: 50px;
     color: white;
     transform: translate(-50%,-50%);
