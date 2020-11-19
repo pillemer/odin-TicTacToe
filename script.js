@@ -33,7 +33,7 @@ const gameBoard = () => {
                 ['', '', ''],
                 ['', '', '']];
 
-    const getState = () => console.log(board);
+    const getState = () => { return board };
 
     const placeMark = (index, marker) => {
         let i = index[0];
@@ -57,22 +57,19 @@ const gameBoard = () => {
     return { getState, placeMark, clearMarks }
 }
 
-// Player factory
-const Player = (name, marker, ai = false) => {
 
-    const move = () => {
-        // does nothing as of yet
-        console.log('some kind of move')
-    }
-    return {name, marker, ai, move};
+// Player factory
+const Player = (name, marker) => {
+    return {name, marker};
 }
+
 
 const gamePlay = (() => {
     const gridCells = document.querySelectorAll('.gridCell')
     let board = gameBoard();
     let markers = ['X', 'O']
     let playerOne = Player('Player 1', markers[0])
-    let playerTwo = Player('Player 2', markers[1], true);
+    let playerTwo = Player('Player 2', markers[1]);
     let currentplayer = playerOne;
 
     const switchPlayer = () => {
@@ -96,7 +93,6 @@ const gamePlay = (() => {
     const gameModeSwitch = () => {
         const modeButton = document.querySelector('#gameMode')
         let singlePlayer = modeButton.value
-        // starts off in two player mode (i.e, false)
         if (singlePlayer) {
             modeButton.innerHTML = 'Two Player'
             modeButton.value = '';
@@ -115,12 +111,13 @@ const gamePlay = (() => {
         return {board, currentplayer}
     };
 
-    
+    return { board, 
+            currentplayer, 
+            switchPlayer, 
+            gameModeSwitch, 
+            gameOver, 
+            newGame, 
+            off, 
+    }
 
-    return { board, currentplayer, switchPlayer, gameModeSwitch, gameOver, newGame, off}
 })();
-
-
-const playerAI = () => {
-    
-}

@@ -10,8 +10,14 @@
     <h1>Tic-Tac-Toe</h1>
     <div class='container'>
         <header>
+            <!-- <label for="player1">Player X:</label>
+            <input type="text" id="player1" name="player1" placeholder="Player name" oninput="setName()">
+            <br>
+            <label for="player2">Player O:</label>
+            <input type="text" id="player2" name="player2" placeholder="Player name" oninput="setName()">
+            <br><br> -->
             <button id='newGame' onclick="gamePlay.newGame()">New Game</button>
-            <button id='gameMode' value='' onclick="gamePlay.gameModeSwitch()">Single Player</button>
+            <button id='gameMode' value='true' onclick="gamePlay.gameModeSwitch()">Single Player</button>
             <h2>Place your marker to start</h2>
             <div id='overlay' onclick="gamePlay.off()">
                 <div id='text'></div>

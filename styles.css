@@ -7,8 +7,10 @@ body {
     font-family: goldman;
     text-align: center;
     width: auto;
+    min-height: 100vh;
     background-color: darkslategrey;
     color: deepskyblue;
+    padding-bottom: 5px;
 }
 
 h1 {
@@ -41,6 +43,25 @@ header > button:hover {
 
 header > button:active {
     transform: scale(0.95);  
+}
+label {
+    font-size: 20px;
+}
+input {
+    color: whitesmoke;
+    font-family: inherit;
+    font-size: 14px;
+    text-align: center;
+    float: right;
+    width: 55%;
+    outline: none;
+    border-style: ridge; 
+    border-color: deepskyblue;
+    background-color: transparent;
+}
+
+::placeholder {
+    color: deepskyblue
 }
 
 .grid {
@@ -95,9 +116,11 @@ header > button:active {
 }
 
 footer {
-    color:darkslategrey;
-    position: absolute;
-    bottom: 5px;
+    color: darkslategray;
+    font-size: 10pt;
+    position: relative;
+    width: 100%;
+    bottom: -1.5rem;
 }
 
 footer:hover {
